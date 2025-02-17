@@ -1,8 +1,6 @@
-import os
 import streamlit as st
 
-import google-generativeai as genai
-import google.ai.generativelanguage as glm
+import google.generativeai as genai
 
 # Retrieve the API key from the environment variable
 genai.configure(api_key="AIzaSyCaX-ydcW9vachNFZegiI9bmIbsJhUfx48")
