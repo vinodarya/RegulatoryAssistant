@@ -1,28 +1,25 @@
-
+import os
 import streamlit as st
-import pandas as pd
-import numpy as np
+from dotenv import load_dotenv
+import google.generativeai as genai
 
+# Retrieve the API key from the environment variable
+genai.configure(api_key="AIzaSyCaX-ydcW9vachNFZegiI9bmIbsJhUfx48")
 
+# Streamlit app
+st.title("Gemini AI Content Generator")
 
+# Text input for user prompt (with form submission on Enter)
+user_input = st.text_input("Enter a prompt:")
 
-
-# Streamlit User Interface for Deployed Model
-def main():
-    st.title('🏠 BFSI Regulatory Assistant')
-    st.write('Help you on Regulatory Compliance')
+# Check if user input is provided and the 'Enter' key is pressed
+if user_input:
+    # Use the Gemini model to generate content
+    model = genai.GenerativeModel("gemini-1.5-flash")
+    response = model.generate_content(user_input)
     
-    # Train model
-    # model = train_model()
-    
-    # User input
-    
-
-    uploaded_file = st.file_uploader('Choose your .pdf file', type="pdf")
-
-    if uploaded_file is not None:
-        df = extract_data(uploaded_file)
-    
-
-if __name__ == '__main__':
-    main()
+    # Display the generated response
+    st.write("Response from Gemini AI:")
+    st.write(response.text)
+else:
+    st.write("Please enter a prompt to generate content.")
