@@ -40,10 +40,7 @@ def main():
     # model = train_model()
     
     # User input
-    # size = st.number_input('House size (square feet)', 
-                          min_value=500, 
-                          max_value=5000, 
-                          value=1500)
+    
 
     uploaded_file = st.file_uploader('Choose your .pdf file', type="pdf")
 
